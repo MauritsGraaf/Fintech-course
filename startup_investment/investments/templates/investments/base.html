@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Startup Investment Platform{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+        }
+
+        .sidebar {
+            background-color: #f4f4f9;
+            width: 200px;
+            padding: 20px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar li a {
+            color: #003366;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Startup Investment Platform</h1>
+    </header>
+
+    <main>
+        <div class="sidebar">
+            <ul>
+                <li><a href="{% url 'startup_list' %}">Startups</a></li>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Startup Investment Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Startups - Startup Investment Platform{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: Arial, sans-serif; /* Use a common font */
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .summary-container {
+            background-color: #f2f2f2;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .summary-container h2 {
+            margin-top: 0;
+        }
+
+        .summary {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .table-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #003366;
+            color: white;
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        .invest-btn {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .invest-btn:hover {
+            background-color: #45a049;
+        }
+
+        .website-btn {
+            margin-left: 10px;
+            padding: 8px 16px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .website-btn:hover {
+            background-color: #005f79;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Startup Investment Platform</h1>
+    </header>
+
+    <main>
+        <h2>Available Startups</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Startup Name</th>
+                    <th>Description</th>
+                    <th>Target Amount</th>
+                    <th>Funding Raised</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for startup in startups %}
+                <tr>
+                    <td>{{ startup.name }}</td>
+                    <td>{{ startup.description }}</td>
+                    <td>${{ startup.target_amount }}</td>
+                    <td>${{ startup.total_funding_raised }}</td> <!-- New column for funding raised -->
+                    <td class="actions">
+                        <a href="{% url 'invest_in_startup' startup_id=startup.id %}" class="invest-btn">Invest</a>
+                        {% if startup.website_link %}
+                        <a href="{{ startup.website_link }}" class="website-btn" target="_blank">Visit Website</a> <!-- Add button for visiting website -->
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No startups available to invest in.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="{% url 'startup_list' %}">Startups</a></li>
+            <li><a href="{% url 'explanation' %}">How it works?</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>© 2024 Startup Investment Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

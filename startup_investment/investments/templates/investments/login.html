@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Login - Startup Investment Platform{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto;
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Startup Investment Platform</h1>
+    </header>
+
+    <main>
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+
+            <input type="submit" value="Login">
+        </form>
+        <p>{% if error %}{{ error }}{% endif %}</p>
+
+        <!-- Button to direct users to the registration page -->
+        <p>Don't have an account? <a href="{% url 'register' %}">Create one</a></p>
+    </main>
+
+    <footer>
+        <p>© 2024 Startup Investment Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Startup Investment Platform</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #003366;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .benefits {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .benefit {
+            width: 30%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Startup Investment Platform</h1>
+    </header>
+
+    <main>
+        <h2>How It Works</h2>
+        <p>Startup Investment Platform is a revolutionary platform that connects investors with promising startups, offering a unique opportunity to participate in their growth journey.</p>
+
+        <ol>
+            <li><strong>Investment Pooling:</strong> Your money is pooled together with other investors as a form of crowdfunding, allowing startups to access the funding they need to thrive.</li>
+            <li><strong>Convertible Loan Agreement:</strong> Once a startup reaches its targeted funding, the pooled funds are converted into a convertible loan agreement, providing capital for the startup's operations and growth.</li>
+            <li><strong>Email Confirmation:</strong> Upon completion of the funding round, investors receive a confirmation email along with the convertible loan agreement, formalizing their investment in the startup.</li>
+        </ol>
+
+        <h2>Why Convertible Loan Agreements?</h2>
+        <p>Startup Investment Platform utilizes convertible loan agreements instead of shares for several reasons:</p>
+        <ul>
+            <li><strong>Flexibility:</strong> Convertible loan agreements offer greater flexibility in structuring investment terms, allowing startups and investors to negotiate terms that suit their needs.</li>
+            <li><strong>Simple Execution:</strong> Unlike equity investments, convertible loan agreements require less administrative overhead and legal complexity, making the investment process more streamlined.</li>
+            <li><strong>Early-Stage Financing:</strong> Startups at early stages may not have a clear valuation, making it challenging to issue shares. Convertible loans provide a financing solution without the need for immediate valuation.</li>
+        </ul>
+
+        <h2>Benefits</h2>
+        <div class="benefits">
+            <div class="benefit">
+                <h3>Diversification</h3>
+                <p>Investing in multiple startups spreads your risk and increases your chances of success. With Startup Investment Platform, you can diversify your investment portfolio effortlessly.</p>
+            </div>
+            <div class="benefit">
+                <h3>Early Access</h3>
+                <p>Get in on the ground floor of innovative startups before they become mainstream. Our platform provides early access to exciting investment opportunities, giving you a competitive edge in the market.</p>
+            </div>
+            <div class="benefit">
+                <h3>High Potential Returns</h3>
+                <p>Successful startups can yield significant returns on your investment. By investing in promising ventures through Startup Investment Platform, you can tap into the high growth potential of early-stage companies.</p>
+            </div>
+        </div>
+
+        <h2>Join Us Today</h2>
+        <p>Don't miss out on the opportunity to invest in the next big thing. Sign up now and start exploring the world of startup investing with Startup Investment Platform.</p>
+        <a href="{% url 'startup_list' %}" class="signup-btn">See available startups</a>
+
+        <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'startup_list' %}">Startups</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+        </div>
+
+    </main>
+
+
+
+    <footer>
+        <p>© 2024 Startup Investment Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

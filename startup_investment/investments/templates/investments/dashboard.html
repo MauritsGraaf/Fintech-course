@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Dashboard - Startup Investment Platform{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif; /* Use a common font */
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.summary-container {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.summary-container h2 {
+    margin-top: 0;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #003366;
+    color: white;
+}
+
+.actions {
+    text-align: center;
+}
+
+.invest-btn {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.invest-btn:hover {
+    background-color: #45a049;
+}
+
+p {
+    margin: 0;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Startup Investment Platform</h1>
+    </header>
+
+    <main>
+        <h2>Welcome to Your Dashboard</h2>
+
+        <div class="summary-container">
+            <h2>Investment Summary</h2>
+            <div class="summary">
+                <p>Total Amount Invested: ${{ total_invested }}</p>
+                <p>Total Profits: ${{ total_profits }}</p>
+            </div>
+        </div>
+
+        <h3>Your Investments</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Startup Name</th>
+                    <th>Invested Money</th>
+                    <th>Invested Date</th>
+                    <th>Profits</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for investment in investments %}
+                    <tr>
+                        <td>{{ investment.startup.name }}</td>
+                        <td>{{ investment.amount }}</td>
+                        <td>{{ investment.date_invested }}</td>
+                        <td>{{ investment.profits|default:0 }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">You have not invested in any startups yet. <a href="{% url 'startup_list' %}">View available startups</a> to invest in.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if investments %}
+            <p>Would you like to invest in more startups? <a href="{% url 'startup_list' %}">View available startups</a> to invest in.</p>
+        {% endif %}
+    </main>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'startup_list' %}">Startups</a></li>
+            <li><a href="{% url 'explanation' %}">How it works?</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <footer>
+        <p>© 2024 Startup Investment Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
