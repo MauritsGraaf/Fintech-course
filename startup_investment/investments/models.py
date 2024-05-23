@@ -6,7 +6,6 @@ class Startup(models.Model):
     description = models.TextField()
     target_amount = models.DecimalField(max_digits=12, decimal_places=2)
     industry = models.TextField()
-    website_link = models.URLField(blank=True)  # New field for website link
 
     def total_funding_raised(self):
         # Calculate the total funding raised for this startup
