@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .invest-btn {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .invest-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <h1>{{ startup.name }}</h1>
+    <p>{{ startup.description }}</p>
+    <p>Target Amount: ${{ startup.funding_required|floatformat:2 }}</p>
+    <p>Funding Raised: ${{ startup.total_funding_raised|floatformat:2 }}</p>
+    <p>Interest: {% widthratio startup.interest 1 100 %}%</p>
+    <img src="data:image/png;base64,{{ image }}" alt="">
+    <p><a href="{% url 'invest_in_startup' startup_id=startup.id %}" class="invest-btn">Invest</a></p>
+{% endblock %}
+

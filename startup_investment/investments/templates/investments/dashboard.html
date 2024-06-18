@@ -105,10 +105,10 @@ p {
 
         <div class="summary-container">
             <h2>Investment Summary</h2>
-            <div class="summary">
-                <p>Total Amount Invested: ${{ total_invested }}</p>
-                <p>Total Profits: ${{ total_profits }}</p>
-            </div>
+            <p>Total Amount Invested: ${{ total_invested|floatformat:2 }}</p>
+            <p>Total Interest: ${{ total_interest|floatformat:2 }}</p>
+            <p>Current date: {{ current_date }}</p>
+            <a href="{% url 'next_day' %}">Simulate next day</a>
         </div>
 
         <h3>Your Investments</h3>
@@ -117,17 +117,19 @@ p {
                 <tr>
                     <th>Startup Name</th>
                     <th>Invested Money</th>
+                    <th>Funds required</th>
                     <th>Invested Date</th>
-                    <th>Profits</th>
+                    <th>Interest</th>
                 </tr>
             </thead>
             <tbody>
                 {% for investment in investments %}
                     <tr>
-                        <td>{{ investment.startup.name }}</td>
-                        <td>{{ investment.amount }}</td>
+                        <td><a href="{% url 'view_startup' startup_id=investment.startup.id %}">{{ investment.startup.name }}</a></td>
+                        <td>${{ investment.amount|floatformat:2 }}</td>
+                        <td>${{ investment.startup.funding_required|floatformat:2 }}</td>
                         <td>{{ investment.date_invested }}</td>
-                        <td>{{ investment.profits|default:0 }}</td>
+                        <td>${{ investment.calculate_profits|floatformat:2 }}</td>
                     </tr>
                 {% empty %}
                     <tr>

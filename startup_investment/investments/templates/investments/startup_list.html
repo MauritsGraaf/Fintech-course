@@ -130,10 +130,10 @@
             <tbody>
                 {% for startup in startups %}
                 <tr>
-                    <td>{{ startup.name }}</td>
+                    <td><a href="{% url 'view_startup' startup_id=startup.id %}">{{ startup.name }}</a></td>
                     <td>{{ startup.description }}</td>
-                    <td>${{ startup.target_amount }}</td>
-                    <td>${{ startup.total_funding_raised }}</td> <!-- New column for funding raised -->
+                    <td>${{ startup.target_amount|floatformat:2 }}</td>
+                    <td>${{ startup.total_funding_raised|floatformat:2 }}</td> <!-- New column for funding raised -->
                     <td class="actions">
                         <a href="{% url 'invest_in_startup' startup_id=startup.id %}" class="invest-btn">Invest</a>
                         {% if startup.website_link %}
