@@ -34,7 +34,7 @@ Sprout Fund is a micro-investment platform that allows users to invest small amo
 
 - **🖥️ Backend:** Django Framework
 - **💻 Frontend:** HTML, CSS, JavaScript
-- **💾 Database:** SQLite (development), PostgreSQL (production)
+- **💾 Database:** SQLite (development), MySQL (production)
 - **☁️ Hosting:** PythonAnywhere (current), Google Cloud (future)
 - **🔗 Version Control:** GitHub
 
