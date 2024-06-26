@@ -1,1 +1,1 @@
-Click on Startup_investment
+Click on Startup_investment for the full documentation.
